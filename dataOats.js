@@ -1,28 +1,28 @@
 deps=[
 {AIM: 'Do great work with current clients', 
 	OBJS:[
-		{OBJ: '16 Decommission DWS [BOSO]',
-			TAS:[
-			'>> ask for latest bi-weekly desk (Anil first) and update',
-			'summarize based on the data and present to some more folks incl. SA',
-			]
-		},
-		{OBJ: '20 Move DEV to the cloud [BOSO] and also gain AWS Architect Cert. Deploy AWS Cloud Architecture',
-			TAS:[
-			'>> prompt response to ocbc',
-			'>> TRSA knock down with Munkits copy',
-			'present to anne and akbar',
-			'>> meeting to iron out all open points',
-			]
-		},
-		{OBJ: '20 run the CPTAC with elan - provide unique insights. integrate data with MengChaiTool. ((ITGovernance-ProvideInsights)) [BOSO]','TAS':[
-			'>> clean up the dependencies - can these be understood by MW?',
-			'>> follow up - choon teck, others',
-			'>> send email to karl, vc, summary of mchai direction',
-			'use yed to map out architecture, visualize dependencies',
-			'get the BiWeekly OCBC decks - use for dependencies planning',
-			]
-		},
+	{OBJ: '16 Decommission DWS [BOSO]',
+		TAS:[
+		'>> ask for latest bi-weekly desk (Anil first) and update',
+		'summarize based on the data and present to some more folks incl. SA',
+		]
+	},
+	{OBJ: '20 Move DEV to the cloud [BOSO] and also gain AWS Architect Cert. Deploy AWS Cloud Architecture',
+		TAS:[
+		'>> prompt response to ocbc',
+		'>> TRSA knock down with Munkits copy',
+		'present to anne and akbar',
+		'>> meeting to iron out all open points',
+		]
+	},
+	{OBJ: '20 run the CPTAC with elan - provide unique insights. integrate data with MengChaiTool. ((ITGovernance-ProvideInsights)) [BOSO]','TAS':[
+		'>> clean up the dependencies - can these be understood by MW?',
+		'>> follow up - choon teck, others',
+		'>> send email to karl, vc, summary of mchai direction',
+		'use yed to map out architecture, visualize dependencies',
+		'get the BiWeekly OCBC decks - use for dependencies planning',
+		]
+	},
 	],
 	TAG: '#p pst'
 },
