@@ -1,0 +1,164 @@
+<!Doctype html>
+<head>   
+<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+<title>tools-rod</title>
+<script language="JavaScript" type="text/javascript">
+
+var str = '\
+||NOT EVEN 10 MINS ON SOMETHING USEFUL!!!! Learn Aurdiono!!!!|...\
+||Use Arvinds account |...\
+||Allocate lockers to Giddi and Shailesh |...\
+||Bonding with better half .... OpenView |...\
+||Walk in the rain |...\
+||Kids out of control ... restore order |...\
+||Too tired ...11 pm ... time for watching serial or youtube |...\
+||Use trunk ... will do tomorrow |...\
+||Agarwal math is tough! ... will do tomorrow ... trunk |...\
+||Fix the timer first |...\
+||Curses to Gid for cornering business |...\
+||10pm ... no time for nmz ... no time for 12 min workout |...\
+||Escalator at rp |...\
+||Ameruddin roza ... cute? |...\
+||Buffet and little india ... tomorrows office ... |...\
+||My slides taken away … no space |...\
+||Bad natured! DONT BE RUDE TO MASHA!|...\
+||lets get new workouts ... new links ... new reading material |...\
+||house dirty ... need to clean till 12:30AM |...\
+'
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+20160708
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////
+// running the show
+//////////////////////////////
+cards = [];
+ansGiven = ""
+infCounter = 0
+cardno = 0
+
+//////////////////////////////
+// parsing the clues
+//////////////////////////////
+//alert(str)
+var g = -1;
+var j= -1;
+var x = "";
+var res = str.split("|");
+res.map( function(item){
+    if(item.length==0){
+      return;
+    }
+    g++;
+    if(g%2==0){
+      j = j+1;
+      cards[j]=[];
+    }
+    cards[j][g%2]=item;
+  }
+)
+//////////////////////////////
+
+function train3(){
+    showCard3();
+}
+
+var i = 0
+var qntimer = 0;
+var anstimer = 0;
+function showCard3(){
+        //cardno  = (infCounter++)%cards.length;
+        cardno  = Math.floor(Math.random() * 100) %cards.length;
+	setTimeout(showQn,0)
+	setTimeout(showAns,10000)
+	setTimeout(showCard3,13000)
+}
+
+function showQn(){
+	if (document.getElementById) {
+		document.getElementById('tex').innerHTML = 
+           "<div class='question'>"+cards[cardno][0]+"</div>";
+	}
+}
+
+function showAns(){
+	if (document.getElementById) {
+		//alert(cards[cardno][0])
+		document.getElementById('tex').innerHTML = 
+           "<div class='question'>"+cards[cardno][1]+"</div>";
+	}
+}
+
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array;
+}
+
+
+function randomInInterval(from,to)
+{
+    return Math.floor(Math.random()*(to-from+1)+from);
+}
+
+
+var cardno = 0;
+
+window.onload = train3;
+
+</script>
+
+<style type="text/css">
+<!--
+
+
+.timeClass img{
+    width: 80%;
+    height: auto;
+}
+
+
+body, input, button, select, option, textarea {
+    /* font-family:calibri; whatever font */
+    font-family: Verdana,Geneva,sans-serif;
+    background-color:#FF6600;
+}
+
+input, button, select, option, textarea {
+    font-size: 100%;
+}
+
+.question {
+	font-size: 3.5em;
+	//color: #ffffff;
+	color:black;
+	//background-color: #4caf50;
+	background-color:#FF6600;
+	padding: 5px;
+	text-align: center;
+	//height: 300px;
+}
+
+-->
+</style>
+
+</head>
+
+<!-- This goes into the BODY of the file -->
+<body>
+<table width="100%">
+<tr><td width="100%" align="center">
+<span id="tex" class="timeClass">
+</span>
+</td></tr>
+</table>
+</body>
