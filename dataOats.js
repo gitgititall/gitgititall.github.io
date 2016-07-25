@@ -138,10 +138,10 @@ deps=[
 	OBJS:[
 	{OBJ: 'AMEN',
 		TAS:[
-		'>> get back copy from 6:45 bus',
 		'>> opmodel-keep shutup! manage the direction! dont vent',
 		]
 	},
 	],
-	TAG: '#o amen'},
+	TAG: '#o amen'
+},
 ]
