@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>OATS</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<style>
+table, th, td {
+	border: 1px solid grey;
+	border-collapse: collapse;
+	padding: 5px;
+}
+
+td {
+	vertical-align: top;
+	font-size: 10pt;
+}
+
+th {
+	text-align: center;
+	background-color: #C0504D;
+	color: #ffffff;
+	height: 30px;
+	border-radius: 5px;
+}
+
+table tr:nth-child(odd) {
+	background-color: ##ffffcc;
+}
+
+table tr:nth-child(even) {
+	background-color: #ffffaa;
+}
+
+.Links {
+	background-color: #ffffff;
+	width: 300px;
+}
+
+.Links1 {
+	background-color: #ffffff;
+	width: 300px;
+}
+
+.DepTitleOpen {
+	border: 0px;
+	background-color: #f4d03f;
+	font-weight: bold;
+	font-size: 12pt;
+	padding: 25px;
+	border-radius: 5px;
+}
+
+.DepTitleClosed {
+	border: 0px;
+	background-color: #999999;
+	color: #696969;
+	font-weight: bold;
+	font-size: 12pt;
+	padding: 25px;
+	border-radius: 5px;
+}
+
+.DepOthers {
+	border: 0px;
+	padding: 7px;
+}
+
+.Comments {
+	background-color: #fcf3cf;
+	padding: 10px;
+	border-radius: 5px;
+	margin: 0px 5px 7px;
+}
+
+.Desc {
+	border: 0px;
+	padding: 3px;
+}
+
+.Apollo {
+	color: #99CCCC;
+	background-color: #003399;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.Mercury {
+	color: #003399;
+	background-color: #99CCCC;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.Foundation {
+	color: #003399;
+	background-color: #eeeeee;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.Alpine {
+	color: #003399;
+	background-color: #FF9933;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.WMS {
+	color: #000000;
+	background-color: #cccccc;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.ListTable {
+	border: 5px solid #E8D0D0;
+	padding: 6px;
+	border-radius: 5px;
+	margin: 0px 0px 10px;
+}
+
+#larger {
+	font-size: 1.3em;
+	font-weight: 600;
+}
+
+#smaller {
+	font-size: 0.8em;
+	color: #aaaaaa;
+	font-style: italic;
+}
+
+#objectives {
+	font-size: 0.9em;
+	color: #ffffff;
+	background-color: #4caf50;
+	padding: 5px;
+}
+</style>
+<!-- <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script> -->
+<script src="angular.min.js"></script>
+</head>
+
+<body>
+
+	<p>
+	<div ng-app="batBrowser" ng-controller="BatController as batCtrl">
+		<input type="text" ng-model="batCtrl.test1"> 
+		<input type="text" ng-model="batCtrl.test2">
+		<input type="text" ng-model="batCtrl.test3">
+		
+		<input type="button" value="clear" ng-click="batCtrl.clearSearch()"> 
+		<input type="button" value="#P" ng-click="batCtrl.setSearch2('#P','')">
+		<input type="button" value="PST" ng-click="batCtrl.setSearch2('PST','')"> 
+		<input type="button" value="AMEN" ng-click="batCtrl.setSearch2('AMEN','')"> <br>
+		<input type="button" value="#S" ng-click="batCtrl.setSearch2('#S','')">
+		<input type="button" value="#T" ng-click="batCtrl.setSearch2('#T','')">
+		<input type="button" value="#AME" ng-click="batCtrl.setSearch2('#AME','>>')"> 
+		<input type="button" value="#N" ng-click="batCtrl.setSearch2('#N','')">
+		<input type="button" value="#O" ng-click="batCtrl.setSearch2('#O','')">
+
+		<p>
+		<p>
+		<div ng-repeat="x in batCtrl.oats | filter:batCtrl.test1">
+			<table class="ListTable" width="500">
+				<tr>
+					<td><span id="larger">{{x.AIM}}</span>
+						<p>
+						<div
+							ng-repeat="y in x.OBJS | filter:batCtrl.test2 | orderBy: 'OBJ':true"">
+							<div id="objectives">{{y.OBJ}}</div>
+							<ul ng-repeat="z in y.TAS | filter:'>>'">
+								<li>{{z}}</li>
+							</ul>
+							<ul ng-repeat="z in y.TAS | filter:'!>>'">
+								<li><span id="smaller"> {{z}} </span></li>
+							</ul>
+						</div></td>
+				</tr>
+			</table>
+			<div></div>
+
+			<script>
+				var app = angular.module('batBrowser', []);
+
+				app.controller('BatController', function() {
+
+					this.oats = deps;
+
+					this.ht = {};
+
+					this.fromProgs = {};
+					this.toProgs = {};
+
+					this.x_links = function(ID, links) {
+						ret = []
+						for (i in links) {
+							ret.push(this.ht[links[i]]);
+						}
+						return ret;
+					}
+
+					this.getPushPull = function(ppull) {
+						ret = "<>"
+						if (ppull == "Push") {
+							ret = "->"
+						}
+						if (ppull == "Pull") {
+							ret = ">-"
+						}
+						return ret
+					}
+
+					this.setSearch2 = function(id1, id2) {
+						this.test1 = id1;
+						this.test2 = id2;
+						this.test3 = "";
+					}
+
+					this.setSearch = function(id) {
+						this.test1 = id;
+						this.test2 = "";
+						this.test3 = "";
+					}
+
+					this.clearSearch = function() {
+						this.test1 = "";
+						this.test2 = "";
+						this.test3 = "";
+					}
+
+					this.cropProg = function(prog) {
+						return prog.substring(1);
+					}
+
+					this.notePrProg = function(prog, checkProg) {
+						p = cropProg(prog);
+						if (checkProg == onProgram(prog)) {
+							return "Y";
+						}
+					}
+
+					this.cropDate = function(dt) {
+						return (dt.substring(0, 10));
+					}
+
+					this.cleanDate = function(dt) {
+						if (dt == '9999-99-99') {
+							return '';
+						}
+						return dt;
+					}
+
+					this.clearProgs = function() {
+						//alert("H");
+						this.fromProgs = "";
+					}
+
+					this.noteProg = function(direction, depId, prog) {
+						if (direction == "from") {
+							this.fromProgs[depId] = this.fromProgs[depId]
+									+ prog;
+						}
+						if (direction == "to") {
+							this.toProgs[depId] = this.toProgs[depId] + prog;
+						}
+						return prog;
+					}
+
+					this.onProgram = function(prog) {
+
+						if (prog.indexOf('Foun') > -1) {
+							return ('Foundation');
+						}
+
+						if (prog.indexOf('Merc') > -1) {
+							return ('Mercury');
+						}
+
+						if (prog.indexOf('Apo') > -1) {
+							return ('Apollo');
+						}
+						if (prog.indexOf('Alp') > -1) {
+							return ('Alpine');
+						}
+
+						if (prog.indexOf('Wealth') > -1) {
+							return ('WMS');
+						}
+
+						//defaulting to WMS
+						return ('WMS');
+
+					}
+
+					this.onStatus = function(st) {
+						if (st == 'Open') {
+							return "DepTitleOpen";
+						} else {
+							return "DepTitleClosed";
+						}
+
+					}
+
+				});
+			</script>
+			<script src="dataOats.js"></script>
+</body>
+
+</html>
