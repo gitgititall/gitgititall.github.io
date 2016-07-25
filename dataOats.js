@@ -54,7 +54,9 @@ deps=[
 			'??',
 		]
 	},
-	],TAG: '#s pst'},
+	],
+	TAG: '#s pst'
+},
 {AIM: ' Speak and write about my ideas', 
 	OBJS:[
 	{OBJ: '20 complete Stanford ml course and then do google deep learning course on udemy ((Have real machine learning experience, not just talking about it (pma). Ticket to Fintech.))',
@@ -85,37 +87,61 @@ deps=[
 		'>>watch Docker talks',
 		]
 	},
-	],TAG: '#t pst'},
-{AIM: ' Nurture family and self', OBJS:[
-	{OBJ: 'Dress well and arrive on time with pomp ((Be physically fit; lose the paunch; be healthy and full of vigor (pma)))',TAS:[
-'>> exercise for 60 minutes',
-]},
-	{OBJ: 'Apply the tools (courage, urgency and flow) and (love & gratitude) and achieve 100% nmz',TAS:[
-	]
-	},
-	{OBJ: 'Have palpable intensity and urgency. Be visible, 5 ppl/day. Forward motion radiating outwards (pma)',TAS:[
-	]
-	},
-	],TAG: '#ame amen'
+	],
+	TAG: '#t pst'
 },
-{AIM: ' Build the platform', OBJS:[
-{OBJ: '20 invest in sg, india ((investment platform))',TAS:[
-'>>store cdp acct num - ask for internet access',
-'>>readup on motilal oswal 30 mins and ask ajith on mutual funds',
-]},
-{OBJ: '((unclutter))',TAS:[
-]},
-],TAG: '#n amen'},
-{AIM: ' Other 5%', OBJS:[
-{OBJ: 'PST',TAS:[
-'>> ask about physio and specialist ((clear med bills for finger op))',
-'>> claim non finger med bill',
-]},
-],TAG: '#o pst'},
-{AIM: ' Other 5%', OBJS:[
-{OBJ: 'AMEN',TAS:[
-'>> get back copy from 6:45 bus',
-'>> opmodel-keep shutup! manage the direction! dont vent',
-]},
-],TAG: '#o amen'},
+{AIM: ' Nurture family and self', 
+	OBJS:[
+	{OBJ: 'Dress well and arrive on time with pomp ((Be physically fit; lose the paunch; be healthy and full of vigor (pma)))',
+		TAS:[
+			'>> exercise for 60 minutes',
+		]
+	},
+	{OBJ: 'Apply the tools (courage, urgency and flow) and (love & gratitude) and achieve 100% nmz',
+		TAS:[
+		]
+	},
+	{OBJ: 'Have palpable intensity and urgency. Be visible, 5 ppl/day. Forward motion radiating outwards (pma)',
+		TAS:[
+		]
+	},
+	],
+	TAG: '#ame amen'
+},
+{AIM: ' Build the platform', 
+	OBJS:[
+	{OBJ: '20 invest in sg, india ((investment platform))',
+		TAS:[
+		'>>store cdp acct num - ask for internet access',
+		'>>readup on motilal oswal 30 mins and ask ajith on mutual funds',
+		]
+	},
+	{OBJ: '((unclutter))',
+		TAS:[
+		]
+	},
+	],
+	TAG: '#n amen'
+},
+{AIM: ' Other 5%', 
+	OBJS:[
+	{OBJ: 'PST',
+		TAS:[
+		'>> ask about physio and specialist ((clear med bills for finger op))',
+		'>> claim non finger med bill',
+		]
+	},
+	],
+	TAG: '#o pst'
+},
+{AIM: ' Other 5%', 
+	OBJS:[
+	{OBJ: 'AMEN',
+		TAS:[
+		'>> get back copy from 6:45 bus',
+		'>> opmodel-keep shutup! manage the direction! dont vent',
+		]
+	},
+	],
+	TAG: '#o amen'},
 ]
