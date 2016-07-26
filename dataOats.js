@@ -69,6 +69,7 @@ deps=[
 		TAS:[
 		'>> read pozen style -- Applied Business Analytics: Integrating Business Process, Big Data, and Advanced Analytics (Ch 7 ++)',
 		'>> read pozen style -- Designing Data-Intensive Applications (Chapter 3. Storage and Retrieval) (Chapter 4. Encoding and Evolution)',
+		'>> read pozen style -- Predictive Analytics for Fraud Detection https://www.safaribooksonline.com/library/view/fraud-analytics-using/9781119133124/c04.xhtml'
 		]
 	},
 	{OBJ: '20 Write a whitepaper on Banking Architecture. Take thinking to next level (pma) ((Be most informed to get the edge. Know at research level about banking technology architecture (pma). Read a lot!))',
