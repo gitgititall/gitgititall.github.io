@@ -1,0 +1,233 @@
+<!Doctype html>
+<head>   
+<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+<title>tech1 multi</title>
+<script language="JavaScript" type="text/javascript">
+
+var T1=10000;
+var T2=3000;
+
+var str = "---";
+
+var strs ={
+
+AD : '\
+||domain has objects such as a...., g...., ous, c...., p..... | accounts, groups, ous, computers, policies\
+||a server running the Active Directory is called a .... | domain controller. it can perform authentication\
+||domains that form a tree must follow what naming convention? | admin.hr.cs.net <---> hr.cs.net <---> cs.net\
+||can finance.cs.net trust hr.cs.net? | yes, trust is transitive. two way.\
+||can you add a domain to a tree? | only at creation time!!! <br> as ip subnets, schemas, global catalogue all shared ... \
+||forests consist of trees joined at .... | the top level <img src="https://support.novell.com/techcenter/articles/img/ana2000120101.gif"></img>\
+||do domains in a forests trust each other? | yes, and share objects, security, authentication info\
+||what happens during a merger? | a TRUSTED FOREST relationship is created <br> and gradually migrated into one forest \
+',
+
+DWSDecom : '\
+|| Termsheets |...\
+|| RM Workbook Publishing |...\
+|| Corporate Actions |...\
+',
+
+Hive: '\
+||____ data is stored in the default warehouse directory |Internal \
+||Hive fully manages the life cycle of the table and data for _____ data\
+| Internal <br>  Data is removed once the internal table is dropped\
+|| /user/hive/warehouse/employee in _____ is used to store the directory for ________ ________| [HDFS] [Employee Table]\
+|| Hive stores metadata in ______ ________ | Relational Database <br> (Deleted when table dropped)\
+',
+
+ML1: '\
+||When training for ML, underfit or model selection error is characterized by\
+<br><img src=http://www.astroml.org/sklearn_tutorial/_images/plot_bias_variance_examples_2.png></img>\
+|low variance, high bias\
+<p><i>(How differs from overfit? What is variance here?)</i>\
+||regression - how to handle categorical features such as "country"?<br>\
+A feature with hundred possible values?<br>\
+Without introducing ordering or spacing?<br>\
+<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSW6t2uQmcFoZAajMsEvozeojAfu6Yb4SIelsjQsKosvrPBv0iSAUKg3HFZ"></img>\
+|OHE - Different feature per country\
+||how can we represent data points with large number of <b>One Hot Encoding</b> or OHE features?\
+<br> 000000000000000100 000000001100000000 000000001000100000000000\
+|SparseVector\
+||How can you get a low bias classifier?\
+|Increase the number of features or Increase the hidden units in neural network\
+||Which of the following is not a way to reduce variance?\
+<br> Fewer features\
+<br> More training Samples\
+<br> More sophisticated model\
+<br> Increased Regularization\
+|More sophisticated model\
+'
+
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+20160727
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////
+// running the show
+//////////////////////////////
+cards = [];
+ansGiven = ""
+infCounter = 0
+cardno = 0
+
+//////////////////////////////
+// parsing the clues
+//////////////////////////////
+//alert(str)
+
+function initCards(){
+	var j= -1;
+	var x = "";
+	var g = -1;
+	var res = str.split("|");
+	res.map( function(item){
+	    	if(item.length==0){
+      			return;
+		}
+		g++;
+		if(g%2==0){
+			j = j+1;
+			cards[j]=[];
+		}
+		cards[j][g%2]=item;
+		}
+	)
+}
+
+//////////////////////////////
+
+function train3(){
+    showCard3();
+}
+
+var i = 0
+var qntimer = 0;
+var anstimer = 0;
+function showCard3(){
+        //cardno  = (infCounter++)%cards.length;
+        cardno  = Math.floor(Math.random() * 100) %cards.length;
+
+	showQn();
+	setTimeout(showAns,T1)
+	setTimeout(showCard3,T1+T2)
+}
+
+function showQn(){
+	if (document.getElementById) {
+		document.getElementById('tex').innerHTML = 
+           "<div class='question'>"+cards[cardno][0]+"</div>";
+	}
+}
+
+function showAns(){
+	if (document.getElementById) {
+		//alert(cards[cardno][0])
+		document.getElementById('tex').innerHTML = 
+           "<div class='question'>"+cards[cardno][1]+"</div>";
+	}
+}
+
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array;
+}
+
+
+function randomInInterval(from,to)
+{
+    return Math.floor(Math.random()*(to-from+1)+from);
+}
+
+
+function letsGo(a){
+	//alert(a.innerHTML);
+	str = strs[a.innerHTML];
+	//alert(str);
+	initCards();
+	train3();
+	return false;	
+}
+
+
+function showTopics(){
+	if (document.getElementById) {		
+		s = ""
+		for (var k in strs){
+			//alert(k);
+			s = s + "<a id='ID"+k+"' class='question' href=''>"+k+"</a> |||| ";
+		}
+		document.getElementById('tex').innerHTML = s;
+		//alert(s);
+	}	
+
+	for(var k in strs){
+		id = "ID"+k;
+		a = document.getElementById(id);
+		if(a==null){
+			continue;
+		}
+		a.onclick = function(){letsGo(this);return false;}
+	}
+}
+
+var cardno = 0;
+
+window.onload = showTopics;
+
+// window.onload = train3;
+
+</script>
+
+<style type="text/css">
+<!--
+
+
+.timeClass img{
+    width: 80%;
+    height: auto;
+}
+
+
+body, input, button, select, option, textarea {
+    /* font-family:calibri; whatever font */
+    font-family: Verdana,Geneva,sans-serif;
+    background-color:#FF6600;
+}
+
+input, button, select, option, textarea {
+    font-size: 100%;
+}
+
+.question {
+	font-size: 3.5em;
+	color:black;
+	background-color:#FF6600;
+	padding: 5px;
+	text-align: center;
+}
+
+-->
+</style>
+
+</head>
+
+<!-- This goes into the BODY of the file -->
+<body>
+<table width="100%">
+<tr><td width="100%" align="center">
+<span id="tex" class="timeClass">
+</span>
+</td></tr>
+</table>
+</body>
