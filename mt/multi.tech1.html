@@ -4,8 +4,8 @@
 <title>tech1 multi</title>
 <script language="JavaScript" type="text/javascript">
 
-var T1=10000;
-var T2=3000;
+var T1=0;
+var T2=0;
 
 var str = "---";
 
@@ -72,16 +72,18 @@ Without introducing ordering or spacing?<br>\
 // running the show
 //////////////////////////////
 cards = [];
-ansGiven = ""
 infCounter = 0
-cardno = 0
 
 //////////////////////////////
 // parsing the clues
 //////////////////////////////
 //alert(str)
 
-function initCards(){
+function initCards(selection){
+
+	T1=10000; //defaults
+	T2=3000; //defaults
+
 	var j= -1;
 	var x = "";
 	var g = -1;
@@ -98,6 +100,15 @@ function initCards(){
 		cards[j][g%2]=item;
 		}
 	)
+
+
+	speed_ = speed[selection];
+	if (speed_ != null){
+		if(speed_=='FAST'){
+			T1=3000;
+			T2=500;
+		}	
+	}
 }
 
 //////////////////////////////
@@ -106,9 +117,6 @@ function train3(){
     showCard3();
 }
 
-var i = 0
-var qntimer = 0;
-var anstimer = 0;
 function showCard3(){
         //cardno  = (infCounter++)%cards.length;
         cardno  = Math.floor(Math.random() * 100) %cards.length;
@@ -127,34 +135,16 @@ function showQn(){
 
 function showAns(){
 	if (document.getElementById) {
-		//alert(cards[cardno][0])
 		document.getElementById('tex').innerHTML = 
            "<div class='question'>"+cards[cardno][1]+"</div>";
 	}
 }
 
-function shuffleArray(array) {
-    for (var i = array.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
-    return array;
-}
-
-
-function randomInInterval(from,to)
-{
-    return Math.floor(Math.random()*(to-from+1)+from);
-}
-
-
 function letsGo(a){
 	//alert(a.innerHTML);
 	str = strs[a.innerHTML];
 	//alert(str);
-	initCards();
+	initCards(a.innerHTML);
 	train3();
 	return false;	
 }
@@ -165,7 +155,7 @@ function showTopics(){
 		s = ""
 		for (var k in strs){
 			//alert(k);
-			s = s + "<a id='ID"+k+"' class='question' href=''>"+k+"</a> |||| ";
+			s = s + "<a id='ID"+k+"' class='question' href=''>"+k+"</a> <br>";
 		}
 		document.getElementById('tex').innerHTML = s;
 		//alert(s);
@@ -180,49 +170,37 @@ function showTopics(){
 		a.onclick = function(){letsGo(this);return false;}
 	}
 }
-
 var cardno = 0;
-
 window.onload = showTopics;
-
-// window.onload = train3;
-
 </script>
 
 <style type="text/css">
 <!--
-
-
 .timeClass img{
     width: 80%;
     height: auto;
 }
-
-
 body, input, button, select, option, textarea {
     /* font-family:calibri; whatever font */
     font-family: Verdana,Geneva,sans-serif;
     background-color:#FF6600;
 }
-
 input, button, select, option, textarea {
     font-size: 100%;
 }
-
 .question {
 	font-size: 3.5em;
+	//color: #ffffff;
 	color:black;
+	//background-color: #4caf50;
 	background-color:#FF6600;
 	padding: 5px;
 	text-align: center;
+	//height: 300px;
 }
-
 -->
 </style>
-
 </head>
-
-<!-- This goes into the BODY of the file -->
 <body>
 <table width="100%">
 <tr><td width="100%" align="center">
