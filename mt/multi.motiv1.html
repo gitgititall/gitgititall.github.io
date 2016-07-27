@@ -4,8 +4,8 @@
 <title>tools-rod</title>
 <script language="JavaScript" type="text/javascript">
 
-var T1=10000;
-var T2=3000;
+var T1=0;
+var T2=0;
 
 var str = "---";
 
@@ -69,6 +69,10 @@ tools_rod: '\
 
 }
 
+speed = {
+	mins6:'FAST',
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////
 
 20160727
@@ -87,7 +91,11 @@ infCounter = 0
 //////////////////////////////
 //alert(str)
 
-function initCards(){
+function initCards(selection){
+
+	T1=10000; //defaults
+	T2=3000; //defaults
+
 	var j= -1;
 	var x = "";
 	var g = -1;
@@ -104,6 +112,15 @@ function initCards(){
 		cards[j][g%2]=item;
 		}
 	)
+
+
+	speed_ = speed[selection];
+	if (speed_ != null){
+		if(speed_=='FAST'){
+			T1=3000;
+			T2=500;
+		}	
+	}
 }
 
 //////////////////////////////
@@ -139,7 +156,7 @@ function letsGo(a){
 	//alert(a.innerHTML);
 	str = strs[a.innerHTML];
 	//alert(str);
-	initCards();
+	initCards(a.innerHTML);
 	train3();
 	return false;	
 }
