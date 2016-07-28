@@ -5,6 +5,7 @@ deps=[
 		TAS:[
 		'ask for latest bi-weekly desk (Anil first) and update',
 		'summarize based on the data and present to some more folks incl. SA',
+		'>> encode all VC inputs and send updated deck to BT',
 		]
 	},
 	{OBJ: '20 Move DEV to the cloud [BOSO] and also gain AWS Architect Cert. Deploy AWS Cloud Architecture',
@@ -17,9 +18,7 @@ deps=[
 		]
 	},
 	{OBJ: '20 run the CPTAC with elan - provide unique insights. integrate data with MengChaiTool. ((ITGovernance-ProvideInsights)) [BOSO]','TAS':[
-		'>> clean up the dependencies - can these be understood by MW?',
-		'>> follow up - choon teck, others',
-		'>> send email to karl, vc, summary of mchai direction',
+		'>> ASK FOR UPDATES, clean up the dependencies - can these be understood by MW? talk to people',
 		'use yed to map out architecture, visualize dependencies',
 		'get the BiWeekly OCBC decks - use for dependencies planning',
 		]
