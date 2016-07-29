@@ -106,6 +106,12 @@ deps=[
 		TAS:[
 		]
 	},
+	{OBJ: 'Maja School Admission',
+		TAS:[
+			'>> contact GIIS, register',
+			'>> really FING OUT if IGCSE of local is the same? are they compatible?',
+		]
+	},
 	],
 	TAG: '#ame amen'
 },
