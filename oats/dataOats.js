@@ -30,8 +30,7 @@ deps=[
 	{OBJ: '16 Meet people, exchange ideas and build contacts (pma) ((nextlevel))',
 		TAS:[
 		'>>meet sahoo, apologise. trip to seletar cafe.',
-		'>>meet dwee',
-		'meet ck Jorge Kazmi dmcd StanArch SAS-Surojit Sandipan niloo sunilkumarSCB datasci! jpm2 rajivshetty sahoo dhruba afees',
+		'meet Kazmi dmcd SAS-Surojit Sandipan niloo datasci! jpm2 rajivshetty sahoo dhruba afees',
 		]
 	},
 	{OBJ: '25 Focus on big data, find a way, get real experience, not just talking about it (pma). Its all about Big Data (pma).',
@@ -40,7 +39,8 @@ deps=[
 	},
 	{OBJ: '((SwitchThisYear)) (pma) ((Raise the game, remember you are an IITian! else only 10-15% (pma) ))',
 		TAS:[
-		'>> check with Popsi, then contact Sahoo / Nimish, proper closure',
+		'>> GatiGanti AHUA move forward',	
+		'check with Popsi, then contact Sahoo / Nimish, proper closure',
 		]
 	},
 	{OBJ: '25 meet dmcd and get his inputs on ML/SPARK, show your "results"',
@@ -116,6 +116,7 @@ deps=[
 	{OBJ: '20 invest in sg, india ((investment platform))',
 		TAS:[
 		'>>store cdp acct num - ask for internet access',
+		'>>use OCBC for Mutual Funds - do some trades!',
 		'>>readup on motilal oswal 30 mins and ask ajith on mutual funds',
 		]
 	},
