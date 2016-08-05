@@ -23,8 +23,7 @@ deps=[
 		'get the BiWeekly OCBC decks - use for dependencies planning',
 		]
 	},
-	],
-	TAG: '#p pst'
+	], TAG: '#p pst'
 },
 {AIM: ' Develop new business opportunities', 
 	OBJS:[
@@ -54,8 +53,7 @@ deps=[
 			'??',
 		]
 	},
-	],
-	TAG: '#s pst'
+	], TAG: '#s pst'
 },
 {AIM: ' Speak and write about my ideas', 
 	OBJS:[
@@ -88,8 +86,7 @@ deps=[
 		'>>watch Docker talks',
 		]
 	},
-	],
-	TAG: '#t pst'
+	], TAG: '#t pst'
 },
 {AIM: ' Nurture family and self', 
 	OBJS:[
@@ -112,8 +109,7 @@ deps=[
 			'>> really FING OUT if IGCSE of local is the same? are they compatible?',
 		]
 	},
-	],
-	TAG: '#ame amen'
+	], TAG: '#ame amen'
 },
 {AIM: ' Build the platform', 
 	OBJS:[
@@ -127,8 +123,7 @@ deps=[
 		TAS:[
 		]
 	},
-	],
-	TAG: '#n amen'
+	], TAG: '#n amen'
 },
 {AIM: ' Other 5%', 
 	OBJS:[
@@ -138,8 +133,7 @@ deps=[
 		'>> claim non finger med bill',
 		]
 	},
-	],
-	TAG: '#o pst'
+	], TAG: '#o pst'
 },
 {AIM: ' Other 5%', 
 	OBJS:[
@@ -148,7 +142,6 @@ deps=[
 		'>> opmodel-keep shutup! manage the direction! dont vent',
 		]
 	},
-	],
-	TAG: '#o amen'
+	], TAG: '#o amen'
 },
 ]
