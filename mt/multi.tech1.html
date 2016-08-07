@@ -59,6 +59,23 @@ Without introducing ordering or spacing?<br>\
 |More sophisticated model\
 '
 
+misc.ahua.1 = '\
+|| Data Governance Considerations <br> Security | .. \
+|| Data Governance Considerations <br> Privacy | ..\
+|| Data Governance Considerations <br> Lineage | ..\
+|| Data Governance Considerations <br> Retention | ..\
+|| Data Governance Considerations <br> Continuity | ..\
+|| Data Governance Considerations <br> Compliance | ..\
+|| Data Governance Considerations <br> How does complexity mushrooms? \
+|   starts with OLTP (but reporting load) …… then DWS (but start schema not enough, specific views) … \
+     <br> …. then DataMart (but direct ETL occasionally) <br> … and archiving … \
+     <br> and reference data (LE,\ Instruments) which does not fit and differs ….. \
+     <br> then unstructured data and multimedia ….\
+|| Case: Bank Operational Data Store - Dodd Frank - end to end view (different products!) \
+    <br> but pressure also to quickly onboard new products\
+| messaging —> HDFS NoSQL —> postTrade and analytics <br> risk and surveillance\
+'
+
 }
 
 speed = { 
