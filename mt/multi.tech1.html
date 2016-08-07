@@ -71,9 +71,19 @@ misc_ahua1 : '\
      <br> then unstructured data and multimedia!\
 || Case: Bank Operational Data Store - Dodd Frank - end to end view (different products!) \
     <br> but pressure also to quickly onboard new products\
-| messaging —> HDFS NoSQL —> postTrade and analytics <br> risk and surveillance\
-'
+| messaging —> HDFS NoSQL —> postTrade (matching, settlement, clearning) and analytics (historical! cheap storage!) \
+    <br> risk and surveillance\
+|| Case: Transaction Monitoring - Form 360 deg view from events, multi sources <br> ... \
+   <br> for fraud detection and dispute resolution  \
+| Apps ... Servers ... Networks ... Devices ... manual correlation? \
+   <br> (aggregate)----> Kafka Message Bus ----> aggregation, transformation, correlation\
+   <br> Streaming (Spark) \
+   <br> Indexing (Solr)   \
+   <br> Storage (HDFS)    \
 
+
+
+'
 }
 
 speed = { 
