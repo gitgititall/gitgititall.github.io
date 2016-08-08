@@ -148,7 +148,7 @@ masfar_iqns1: '\
 
 speed = { 
 	mins6:'FAST',
-	masfar_iqns1:'FAST',
+	masfar_iqns1:'MED',
 }
 
 
@@ -199,6 +199,10 @@ function initCards(selection){
 			T1=3000;
 			T2=500;
 		}	
+	}
+	if(speed_=='MED'){
+		T1=6000;
+		T2=1500;
 	}
 }
 
