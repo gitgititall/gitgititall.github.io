@@ -1,0 +1,281 @@
+<!DOCTYPE html> <html> <head> <title>OATS 2.0</title> <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> <script>
+s='\
+|aim Do great work with current clients pst#p\
+|obj prep for GCAD\
+|master R, python and statistical modelling\
+|\
+|\
+|\
+|aim Develop new business opportunities pst#s\
+|obj make the vpA\
+|meet Wilson\
+|meet Lok Pin\
+|send to dbs and prepare on tech\
+|pray for cs nandoori call\
+|prep for cs nimish roles\
+|ask p-kazmi\
+|expertise on spark and continue safari\
+|\
+|\
+|\
+|aim Speak and write about my ideas pst#t\
+|obj post on linkedin\
+|post on nn\
+|post on digital transformation\
+|\
+|\
+|\
+|aim Nurture family and self amen#ame\
+|\
+|\
+|\
+|aim Build the platform amen#n\
+|\
+|\
+|\
+|aim Other 5% pst #o\
+|\
+|\
+|\
+|aim Other 5% amen #o\
+|obj Other\
+|visit hand clinic for three O.T. bills\
+|visit ANZ to cancel the card - bill in drawer\
+|\
+|\
+'
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+table, th, td {
+	border: 1px solid grey;
+	border-collapse: collapse;
+	padding: 5px;
+}
+
+td {
+	vertical-align: top;
+	font-size: 10pt;
+}
+
+th {
+	text-align: center;
+	background-color: #C0504D;
+	color: #ffffff;
+	height: 30px;
+	border-radius: 5px;
+}
+
+
+.ListTable {
+	border: 5px solid #E8D0D0;
+	padding: 6px;
+	border-radius: 5px;
+	margin: 0px 0px 10px;
+}
+
+#larger {
+	font-size: 1.3em;
+	font-weight: 600;
+}
+
+#objectives {
+	font-size: 0.9em;
+	color: #ffffff;
+	background-color: #4caf50;
+	padding: 5px;
+}
+</style>
+<!-- <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script> -->
+<script src="angular.min.js"></script>
+</head>
+
+<body>
+	<p>
+	<div ng-app="batBrowser" ng-controller="BatController as batCtrl">
+		<input type="text" ng-model="batCtrl.test1"> 
+		<!--   <input type="text" ng-model="batCtrl.test2"> --> 
+		<!--   <input type="text" ng-model="batCtrl.test3"> --> 
+		<input type="button" value="clear" ng-click="batCtrl.clearSearch()"> 
+		<br> 
+		<input type="button" value="#P" ng-click="batCtrl.setSearch2('#P','')">
+		<input type="button" value="PST" ng-click="batCtrl.setSearch2('PST','')"> 
+		<input type="button" value="AMEN" ng-click="batCtrl.setSearch2('AMEN','')"> 
+		// 
+		<input type="button" value="#S" ng-click="batCtrl.setSearch2('#S','')">
+		<input type="button" value="#T" ng-click="batCtrl.setSearch2('#T','')">
+		<input type="button" value="#AME" ng-click="batCtrl.setSearch2('#AME','>>')"> 
+		<input type="button" value="#N" ng-click="batCtrl.setSearch2('#N','')">
+		<input type="button" value="#O" ng-click="batCtrl.setSearch2('#O','')">		
+		<p>
+		<div ng-repeat="x in batCtrl.oats | filter:batCtrl.test1">
+			<table class="ListTable" width="500">
+				<tr>
+					<td><span id="larger">{{x.aim}}</span>
+						<p>
+						<div ng-repeat="y in x.objs">
+							<hr>
+							<div id="objectives">{{y.objective}}</div>
+							<ul ng-repeat="z in y.targets">
+								<li>{{z}}</li>
+							</ul>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	
+	<script>
+	var app = angular.module('batBrowser', []);
+	app.controller('BatController', function() {
+		this.oats = deps;
+		this.setSearch2 = function(id1, id2) {
+			this.test1 = id1;this.test2 = id2;this.test3 = "";
+		}
+		this.setSearch = function(id) {
+			this.test1 = id;this.test2 = "";this.test3 = "";
+		}
+		this.clearSearch = function() {
+			this.test1 = "";this.test2 = "";this.test3 = "";}
+	});
+	</script>
+
+	<script src="dataOats.js"></script>
+
+	<script>
+	
+	//deps[]
+	//	{},{},{}
+	//		aim:""
+	//		objs:[]
+	//			{},{},{}
+	//				objective:""
+	//				targets:[]
+	//					"","",""
+	
+	var tokens = s.split("|");
+	var deps=[]; //list of aim_
+	var aim_={aim:"",objs:[]}; //objs is list of obj						
+	var list=[];
+	var obj = {objective:"", targets:[]};
+															
+	for (i in tokens){
+		if(tokens[i].length==0) continue;				
+						
+		var str = String(tokens[i]);
+		
+		x = str.indexOf("===");
+		if(x==0) continue;
+		
+		x = str.indexOf("aim");
+		if(x==0){
+			//if we need to close the existing object, do that
+			//and start a new one
+			if(!(obj.objective=="")){						
+				aim_.objs.push(obj);
+				obj = {objective:"", targets:[]};
+			}					
+			
+			//if we need to close the existing object, do that
+			//and start a new one
+			if(aim_.aim!=""){
+				deps.push(aim_);
+				aim_={aim:"",objs:[]};						
+			}
+			
+			aim_.aim=str.substring(x+4);					
+			continue;
+		}
+		
+		x = str.indexOf("obj");
+		if(x==0){
+			//if we need to close the existing object, do that
+			if(!(obj.objective=="")){
+				aim_.objs.push(obj);						
+			}			
+			obj = {objective:"", targets:[]};
+			obj.objective=str.substring(x+4);
+			list = obj.targets;								
+			continue;
+		}										
+		//add tasks to the active list				
+		list.push(str);
+	}
+
+	//close the last set
+	if(!(obj.objective=="")){
+		aim_.objs.push(obj);
+	}
+	if(aim_.aim!=""){
+		deps.push(aim_);											
+	}				
+
+	</script>
+</body>
+</html>
