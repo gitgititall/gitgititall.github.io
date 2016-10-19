@@ -13,7 +13,7 @@ s='\
 |meet Lok Pin with 20 impressive points ===\
 |send to dbs and prepare on tech\
 |pray for cs nandoori call - ask TQB\
-|prep for cs nimish roles : ask 10 questions on microservies and answer them ===\
+|prep for cs nimish roles : ask 10 questions on microservices and answer them ===\
 |ask p-kazmi\
 |expertise on spark and continue safari\
 |\
@@ -31,8 +31,8 @@ s='\
 |\
 |aim Nurture family and self amen#ame\
 |obj school admissions ahua\
-|P1 on 20th 8:30-11:30\
-|talk to GIIS for Nov\
+|P1 on 20th 8:30-11:30 ahua @\
+|talk to GIIS for Nov ahua\
 |\
 |\
 |\
@@ -60,72 +60,72 @@ s='\
 '
 </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
 <style>
 table, th, td {
 	border: 1px solid grey;
@@ -146,7 +146,7 @@ th {
 	border-radius: 5px;
 }
 
-
+　
 .ListTable {
 	border: 5px solid #E8D0D0;
 	padding: 6px;
@@ -173,20 +173,23 @@ th {
 <body>
 	<p>
 	<div ng-app="batBrowser" ng-controller="BatController as batCtrl">
-		<input type="text" ng-model="batCtrl.test1"> 
-		<!--   <input type="text" ng-model="batCtrl.test2"> --> 
+
+		<INPUT type="text" ng-model="batCtrl.test1"> 
+
 		<!--   <input type="text" ng-model="batCtrl.test3"> --> 
-		<input type="button" value="clear" ng-click="batCtrl.clearSearch()"> 
-		<br> 
-		<input type="button" value="#P" ng-click="batCtrl.setSearch2('#P','')">
-		<input type="button" value="PST" ng-click="batCtrl.setSearch2('PST','')"> 
-		<input type="button" value="AMEN" ng-click="batCtrl.setSearch2('AMEN','')"> 
-		// 
-		<input type="button" value="#S" ng-click="batCtrl.setSearch2('#S','')">
-		<input type="button" value="#T" ng-click="batCtrl.setSearch2('#T','')">
-		<input type="button" value="#AME" ng-click="batCtrl.setSearch2('#AME','>>')"> 
-		<input type="button" value="#N" ng-click="batCtrl.setSearch2('#N','')">
-		<input type="button" value="#O" ng-click="batCtrl.setSearch2('#O','')">		
+		<INPUT type="button" value="clear" ng-click="batCtrl.clearSearch()">
+		<INPUT type="button" value="---" ng-click="batCtrl.setSearch2('','===')">
+		<INPUT type="button" value="@" ng-click="batCtrl.setSearch2('','@')"> 
+		<input type="text" ng-model="batCtrl.test2" hidden=true>
+		<BR><INPUT type="button" value="#P" ng-click="batCtrl.setSearch2('#P','')">
+		<INPUT type="button" value="PST" ng-click="batCtrl.setSearch2('PST','')"> 
+		<INPUT type="button" value="AMEN" ng-click="batCtrl.setSearch2('AMEN','')"> 
+		// 		 <INPUT type="button" value="#S" ng-click="batCtrl.setSearch2('#S','')">
+		<INPUT type="button" value="#T" ng-click="batCtrl.setSearch2('#T','')">
+		<INPUT type="button" value="#AME" ng-click="batCtrl.setSearch2('#AME','>>')"> 
+		<INPUT type="button" value="#N" ng-click="batCtrl.setSearch2('#N','')">
+		<INPUT type="button" value="#O" ng-click="batCtrl.setSearch2('#O','')">
+
 		<p>
 		<div ng-repeat="x in batCtrl.oats | filter:batCtrl.test1">
 			<table class="ListTable" width="500">
@@ -196,7 +199,7 @@ th {
 						<div ng-repeat="y in x.objs">
 							<hr>
 							<div id="objectives">{{y.objective}}</div>
-							<ul ng-repeat="z in y.targets">
+							<ul ng-repeat="z in y.targets | filter:batCtrl.test2">								
 								<li>{{z}}</li>
 							</ul>
 						</div>
@@ -218,9 +221,7 @@ th {
 		this.clearSearch = function() {
 			this.test1 = "";this.test2 = "";this.test3 = "";}
 	});
-	</script>
-
-	<script src="dataOats.js"></script>
+	</script>	
 
 	<script>
 	
