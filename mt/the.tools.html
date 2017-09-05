@@ -14,29 +14,37 @@ tools : '\
 ||feeling tiny .. limited .. lacking courage| AHU-VORTEX \
 ||disengaged ... depleted| AHU-VORTEX \
 \
-||hopeless -- trapped -- in despair| NURTURING MOTHER FORCE\
-||worried (in loc) | NURTURING MOTHER FORCE \
+||hopeless -- trapped -- demoralized -- in despair| NURTURING MOTHER FORCE \
+||not feeling confident | NURTURING MOTHER FORCE \
 ||too much hope -- false hope| NURTURING MOTHER FORCE \
 \
-||shattered -- heartbroken -- emotional hurt| REBORN TOWER \
-||timid -- scared of feeling hurt| REBORN TOWER \
-||timid -- scared of failing| REBORN TOWER \
+||shattered -- heartbroken -- emotionally hurt | REBORN TOWER \
+||timid -- scared of feeling hurt -- feeling stupid | REBORN TOWER \
+||timid -- scared of feeling failed | REBORN TOWER \
 \
 ||fear of event| DESIRE PAIN -- 54321!\
 ||avoiding pain| DESIRE PAIN -- 54321!\
 ||avoiding action| DESIRE PAIN -- 54321!\
 \
 ||anger and resentment towards person | SEND LOVE\
-||anger and resentment towards person | SEND LOVE\
+||jealousy and dislike towards person | SEND LOVE\
 \
 ||ashamed .. guilty | LEAD SHADOW\
 ||insecure .. unworthy | LEAD SHADOW\
+||others are much better! | LEAD SHADOW\
 \
-||worried (outside loc) | GRATEFUL FLOW\
+||worried about the world | GRATEFUL FLOW\
 ||generally negative | GRATEFUL FLOW\
 \
-||small actions .. not reaching potential| TIME IS LIMITED!\
-||slow movement .. not reaching potential| TIME IS LIMITED!\
+||small actions .. not reaching potential| TIMER IS RUNNING!\
+||slow movement .. not reaching potential| TIMER IS RUNNING!\
+||lacking focus .. not reaching potential| TIMER IS RUNNING!\
+\
+\
+|| to fall and rise -- higher each time -- to come alive -- to reach potential\
+|| to fall and rise -- higher each time -- to come alive -- to reach potential\
+|| to fall and rise -- higher each time -- to come alive -- to reach potential\
+|| to fall and rise -- higher each time -- to come alive -- to reach potential\
 ',
 }
 　
@@ -52,7 +60,6 @@ speed = {
 20160727
 　
 ////////////////////////////////////////////////////////////////////////////////////////
-　
 　
 //////////////////////////////
 // running the show
@@ -87,22 +94,10 @@ function initCards(selection){
 		}
 	)
 　
-　
-	speed_ = speed[selection];
-	if (speed_ != null){
-		if(speed_=='FAST'){
-			T1=3000;
-			T2=500;
-		}	
-	}
-	if(speed_=='MED'){
-		T1=6000;
-		T2=1500;
-	}
-	if(speed_=='SLOWQ'){
-		T1=20000;
-		T2=1000;
-	}
+	speed_ = speed[selection];	
+	if(speed_=='FAST'){T1=3000;T2=500;}	
+	if(speed_=='MED'){T1=6000;T2=1500;}
+	if(speed_=='SLOWQ'){T1=8000;T2=1000;}
 }
 　
 //////////////////////////////
