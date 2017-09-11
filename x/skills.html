@@ -1,0 +1,76 @@
+<pre>
+Cloud - Full Certification AWS and Stories
+Cloud - Azure Architect / Google Cloud Architect
+　
+AI and ML - 
+Spark ML
+AI and ML - TensorFlow
+　
+DevOps - 
+Docker
+DevOps - Jenkins, Chef/Puppet/Ansible
+　
+MicroServices - Light JEE
+MicroServices - Spring
+　
+Big Data â€" Spark
+Big Data â€" Spark Streaming and Storm
+Big Data - Hadoop - HDFS, MapReduce
+Big Data - Hadoop - Hive, Pig
+Big Data - Hadoop - Flume
+　
+NoSQL - 
+Cassandra, MongoDB, Redis, Riak, Neo4j
+ElasticSearch ELK
+　
+Kafka
+　
+Also  
+Blockchain
+　
+　
+docker (official or see Docker Pro) - See google cloud 
+-- tensorflow
+-- spark == jupyter/pyspark-notebook 
+-- hadoop
+-- jenkins == jenkins
+-- hbase
+-- cassandra
+-- continuumio/anaconda (python ML collection with jupyter)
+-- mongo
+-- couchDB (JSON document database with mapreduce)
+-- postgres  (SQL Server!!!!)
+-- kafka (See Docker Pro)
+-- solace from dev.solace.com
+-- rabbitmq and ibm mq
+-- elasticsearch 
+-- logstash 
+-- kibana
+-- solr
+-- nginx
+-- node (try node.js!!!)
+-- mariadb (is effectively MySQL)
+-- memcached
+-- maven
+-- tomcat
+-- R (r-base or studio?)
+-- also, glassfish
+　
+(Zalora - mongodb cassandra couchbase redis // hadoop emr // kafka, spark, kinesis, lambda)
+</pre>
+　
+<pre>
+docker run -d --name jen3 -p 8080:8080 -v $PWD/jenkins:/var/jenkins_home jenkins
+　
+docker run -d -p 8080:8888 -v $PWD:/home/jovyan --name spark jupyter/pyspark-notebook
+(see maxmelnick)
+import pyspark // sc = pyspark.SparkContext('local[*]') // # do something to prove it works
+rdd = sc.parallelize(range(1000)) // rdd.takeSample(False, 5)
+　
+aws sns list-topics --profile adminuser
+aws sns publish --topic-arn arn:aws:sns:ap-southeast-1:629096109037:TopicalA  --profile adminuser --message "APHMA Please help Amee\'n"
+aws s3 cp stories.html  s3://arka7  --acl public-read
+</pre>
+　
+　
+　
