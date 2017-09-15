@@ -4,12 +4,12 @@
 <title>the tools aa</title>
 <script language="JavaScript" type="text/javascript">
 var T1 = 0; var T2 = 0; var str = "---";
-　
+ 
 // sun suns mother father
 // forward backwards up down side
 // engagement increases energy
 // black sun -- switch to giving not taking
-
+　
 var strs ={
 tools : '\
 ||distraction beckons| BLACK SUN\
@@ -17,6 +17,7 @@ tools : '\
 ||scroll through list of articles and videos| BLACK SUN\
 ||hedo impulse| BLACK SUN\
 ||hedo impulse| BLACK SUN\
+||zero investments for kids -- distracted | BLACK SUN\
 \
 ||cant go on -- no energy -- wanna give up| DUA ENERGY VORTEX \
 ||overwhelmed -- depleted | DUA ENERGY VORTEX \
@@ -29,9 +30,9 @@ tools : '\
 ||feeling stuck in a life without possibilities -- cannot risk anything | DUA ENERGY VORTEX \
 ||withdrawing from engaging with others | DUA ENERGY VORTEX \
 ||withdrawing from the world | DUA ENERGY VORTEX \
-|| low on enthusiasm | DUA ENERGY VORTEX \
-|| low on creativity | DUA ENERGY VORTEX \
-|| low on goodwill | DUA ENERGY VORTEX \
+||low on enthusiasm | DUA ENERGY VORTEX \
+||low on creativity | DUA ENERGY VORTEX \
+||low on goodwill | DUA ENERGY VORTEX \
 \
 ||losing hope -- trapped -- demoralized -- in despair| NURTURING MOTHER FORCE \
 ||feeling defeated by life | NURTURING MOTHER FORCE \
@@ -123,37 +124,37 @@ tools1: '\
 ||event -- flee!|<br>LEAD SHADOW\
 ',	
 }
-　
+ 
 speed = {
 	mins6:'FAST',
 	masfar_iqns1:'MED',
 	tools:'SLOWQ',
 	tools1:'FAST',
 }
-　
-　
+ 
+ 
 ////////////////////////////////////////////////////////////////////////////////////////
-　
+ 
 20160727
-　
+ 
 ////////////////////////////////////////////////////////////////////////////////////////
-　
+ 
 //////////////////////////////
 // running the show
 //////////////////////////////
 cards = [];
 infCounter = 0
-　
+ 
 //////////////////////////////
 // parsing the clues
 //////////////////////////////
 //alert(str)
-　
+ 
 function initCards(selection){
-　
+ 
 	T1=10000; //defaults
 	T2=3000; //defaults
-　
+ 
 	var j= -1;
 	var x = "";
 	var g = -1;
@@ -169,50 +170,50 @@ function initCards(selection){
 		}
 		cards[j][g%2]=item;
 	})
-　
+ 
 	speed_ = speed[selection];	
 	if(speed_=='FAST'){T1=3000;T2=500;}	
 	if(speed_=='MED'){T1=6000;T2=1500;}
 	if(speed_=='SLOWQ'){T1=8000;T2=1000;}
 }
-　
+ 
 //////////////////////////////
-　
+ 
 function train3(){
     showCard3();
 }
-　
+ 
 function showCard3(){
 	//cardno  = (infCounter++)%cards.length;
 	cardno  = Math.floor(Math.random() * 100) %cards.length;
-　
+ 
 	showQn();
 	setTimeout(showAns,T1)
 	setTimeout(showCard3,T1+T2)
 }
-　
+ 
 function showQn(){
 	if (document.getElementById) {
 		document.getElementById('tex').innerHTML = 
            "<div class='question'>"+cards[cardno][0]+"</div>";
 	}
 }
-　
+ 
 function showAns(){
 	if (document.getElementById) {
 		document.getElementById('tex').innerHTML = 
            "<div class='question'>"+cards[cardno][1]+"</div>";
 	}
 }
-　
+ 
 function letsGo(a){
 	str = strs[a.innerHTML];
 	initCards(a.innerHTML);
 	train3();
 	return false;	
 }
-　
-　
+ 
+ 
 function showTopics(){
 	if (document.getElementById) {		
 		s = ""
@@ -223,7 +224,7 @@ function showTopics(){
 		document.getElementById('tex').innerHTML = s;
 		//alert(s);
 	}	
-　
+ 
 	for(var k in strs){
 		id = "ID"+k;
 		a = document.getElementById(id);
@@ -233,11 +234,11 @@ function showTopics(){
 		a.onclick = function(){letsGo(this);return false;}
 	}
 }
-　
+ 
 var cardno = 0;
 window.onload = showTopics;
 </script>
-　
+ 
 <style type="text/css">
 <!--
 .timeClass img{
@@ -274,4 +275,5 @@ input, button, select, option, textarea {
 </td></tr>
 </table>
 </body>
+ 
 　
