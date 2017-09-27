@@ -1,0 +1,111 @@
+
+<!-- COUNTDOWN TIMER -->
+ 
+<!-- This goes in the HEAD of the html file -->
+ 
+<head>
+<title>10x New Timer</title>
+<script language="JavaScript" type="text/javascript">
+ 
+<!--
+var sec =21;   // set the seconds (leading zero)
+var min = 5;   // set the minutes
+var SD;
+　
+function letsGo(a){
+        	window.clearTimeout(SD);
+	//document.bgColor='#500000';
+	document.bgColor='#ccd1d1';
+	min = a.innerHTML;
+	sec = 11;
+	countDown();
+	return false;	
+}
+　
+function X(){
+　
+	//document.bgColor='#500000';
+	document.bgColor='#ccd1d1';
+　
+	for(i=1;i<11;i++){
+		id = "mylink"+i;
+		a = document.getElementById(id);
+		if(a==null){
+			continue;
+		}
+		a.onclick = function(){letsGo(this);return false;}
+	}
+}
+ 
+function countDown() {
+   sec--;
+  if (sec == -01) {
+   sec = 59;
+   min = min - 1; }
+  else {
+   min = min; }
+ 
+        if (sec<=9) { sec = "0" + sec; }
+ 
+        time = (min<=9 ? "0" + min : min) + " : " + sec;
+  
+        if (document.getElementById) { document.getElementById('theTime').innerHTML = time; }
+        document.title=time;
+ 
+        SD=window.setTimeout("countDown();", 1000);
+        if (min == '00' && sec == '00') { 
+               sec = "00"; window.clearTimeout(SD);               
+               for(i = 0;i<500;i++){                                              
+                       setTimeout("document.bgColor='0000FF';document.title='                   '",1000*i);
+                       setTimeout("document.bgColor='#FFFF00';document.title='*********************'",1000*i+500);
+               }
+        }
+}
+ 
+window.onload = X;
+-->
+</script>
+ 
+<style type="text/css">
+<!--
+ .duraClass {
+  font-family:arial,verdana,helvetica,sans-serif;
+  font-weight:normal;
+  font-size:35pt;
+  }
+ .timeClass {
+  color: white;
+  font-family:arial,verdana,helvetica,sans-serif;
+  font-weight:normal;
+  font-size:40pt;
+  }
+  
+-->
+</style>
+ 
+</head>
+ 
+<!-- This goes into the BODY of the file -->
+<body>
+<span class="duraClass">
+<a href="Timer.html">R</a>
+<a id="mylink1" href="">2</a>
+<a id="mylink2" href="">5</a>
+<a id="mylink3" href="">25</a>
+<a id="mylink4" href="">55</a>
+</span>
+　
+<span style="font-size:35pt;">
+<a id="mylink5" href="">1</a>
+<a id="mylink6" href="">3</a>
+<a id="mylink7" href="">6</a>
+<a id="mylink8" href="">10</a>
+<a href="Timer.html">R</a>
+</span>
+<p>
+<table width="100%">
+ <tr><td width="100%" align="left"><span id="theTime" class="timeClass"></span></td></tr>
+</table>
+</body>
+ 
+　
