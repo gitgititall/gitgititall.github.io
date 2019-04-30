@@ -11,7 +11,7 @@
 var sec =21;   // set the seconds (leading zero)
 var min = 5;   // set the minutes
 var SD;
-　
+ 
 function letsGo(a){
         	window.clearTimeout(SD);
 	//document.bgColor='#500000';
@@ -21,12 +21,12 @@ function letsGo(a){
 	countDown();
 	return false;	
 }
-　
+ 
 function X(){
-　
+ 
 	//document.bgColor='#500000';
 	document.bgColor='#ccd1d1';
-　
+ 
 	for(i=1;i<11;i++){
 		id = "mylink"+i;
 		a = document.getElementById(id);
@@ -56,8 +56,8 @@ function countDown() {
         if (min == '00' && sec == '00') { 
                sec = "00"; window.clearTimeout(SD);               
                for(i = 0;i<500;i++){                                              
-                       setTimeout("document.bgColor='0000FF';document.title='                   '",1000*i);
-                       setTimeout("document.bgColor='#FFFF00';document.title='*********************'",1000*i+500);
+                       setTimeout("document.bgColor='#f2f2f2';document.title='                   '",1000*i);
+                       setTimeout("document.bgColor='#a6a6a6';document.title='*********************'",1000*i+500);
                }
         }
 }
@@ -94,7 +94,7 @@ window.onload = X;
 <a id="mylink3" href="">25</a>
 <a id="mylink4" href="">55</a>
 </span>
-　
+ 
 <span style="font-size:35pt;">
 <a id="mylink5" href="">1</a>
 <a id="mylink6" href="">3</a>
@@ -108,4 +108,4 @@ window.onload = X;
 </table>
 </body>
  
-　
+ 
