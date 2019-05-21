@@ -1,6 +1,13 @@
-<!Doctype html>
-<head>
-<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <title>tools-rod</title>
 <script language="JavaScript" type="text/javascript">
 
@@ -10,6 +17,8 @@ var T2=0;
 var str = "---";
 
 var strs ={
+
+
 rem : '\
 ||: write 1000 words to clear the mind |...\
 ||: do the hardest stuff first! <br> out of time!| ...\
@@ -36,6 +45,11 @@ mins6: '\
 || 10 questions 6 |    \
 || active love 3 // reversal of des 3 |    \
 || atta 6 | \
+',
+
+now_thinking : '\
+||what is event api? | see the manual! |\
+||what is session api? | please ... see the manual! |\
 ',
 
 tools1: '\
@@ -65,9 +79,14 @@ tools1: '\
 ',
 
 tools_rod: '\
-||PRESENTING TO DMCD |...\
-||MAJAB SCHOOL TALKING TO GIIS |...\
-||INVITING | ...\
+|| singtel bill | \
+|| my insurance |   \
+|| roti maker |   \
+|| video conf |   \
+|| air con |   \
+|| save counsellor advice |   \
+|| talk to khalu and f&f |   \
+|| DL for group |   \
 ',
 
 HINDI:'\
@@ -79,10 +98,12 @@ HINDI:'\
 || बाबा | \
 ',
 
+
+
 }
 
 speed = {
-	mins6:'FAST',
+	tools_rod:'FAST',
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -156,7 +177,8 @@ function showCard3(){
 
 function showQn(){
 	if (document.getElementById) {
-		document.getElementById('tex').innerHTML = "<div class='question'>"+cards[cardno][0]+"</div>";
+		document.getElementById('tex').innerHTML = "<div>"+cards[cardno][0]+"</div>";
+		document.title="["+cards[cardno][0];
 	}
 }
 
@@ -164,6 +186,7 @@ function showAns(){
 	if (document.getElementById) {
 		document.getElementById('tex').innerHTML = 
 		"<div class='question'>"+cards[cardno][1]+"</div>";
+		document.title="[["+cards[cardno][1]
 	}
 }
 
@@ -181,9 +204,10 @@ function showTopics(){
 		s = "";
 		for (var k in strs){
 			//alert(k);
-			s = s + "<a id='ID"+k+"' class='question' href=''>"+k+"</a><br>";
+			s = s + "<button id='ID"+k+"' class='btn btn-link btn-lg' href=''>"+k+"</button>";
 		}
-	document.getElementById('tex').innerHTML = s;
+		s = s+"<p>";
+	document.getElementById('qn').innerHTML = s;
 	//alert(s);
 	}              
 
@@ -199,45 +223,21 @@ var cardno = 0;
 window.onload = showTopics;
 </script>
 
-<style type="text/css">
-<!--
-.timeClass img {
-	width: 80%;
-	height: auto;
-}
-
-body, input, button, select, option, textarea {
-	/*
-font-family:calibri; whatever font */
-	font-family: Verdana, Geneva, sans-serif;
-	background-color: #FF6600;
-}
-
-input, button, select, option, textarea {
-	font-size: 100%;
-}
-
-.question {
-	font-size: 3.5em; //
-	color: #ffffff;
-	color: black; //
-	background-color: #4caf50;
-	background-color: #FF6600;
-	padding: 5px;
-	text-align: center; //
-	height: 300px;
-}
--->
-</style>
 </head>
 <body>
-	<table width="100%">
+	<div class="mx-auto" style="width: 50%; margin-top: 50px">
+	<table class="table table-dark mx-auto">
 		<tr>
-			<td width="100%" align="center"><span id="tex" class="timeClass">
-			</span></td>
+			<div id="qn"></div>
+			<button type="button" class="btn btn-secondary btn-lg btn-block" id="tex"></button>
 		</tr>
 	</table>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
+</html>
+　
+　
 
-　
-　
