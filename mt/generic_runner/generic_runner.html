@@ -1,0 +1,164 @@
+<!doctype html>
+  <html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity=m"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<title>insurance</title>
+
+<script language="JavaScript" type="text/javascript">
+function getData(title) {
+            var newScript = document.createElement("script");
+			newScript.src = title+".js";
+			document.getElementById("output").appendChild(newScript);
+			newScript.onload = showTopics
+}
+</script>
+</head>
+<body>
+<div id="output"> 
+</div>
+	<div class="mx-auto" style="width: 50%; margin-top: 50px">
+	<select class="form-control" onChange="getData(this.value);">
+    <option value="-">ahua</option>
+    <option value="theta2">theta2</option>
+    <option value="hk.digi">hk.digi</option>
+	<option value="insurance_theta2">insurance_theta2</option>
+    <option value="4">4</option>
+	<option value="5">5</option>
+</select>
+	<table class="table table-dark mx-auto">
+		<tr>
+			<div id="qn"></div>
+			<button type="button"  style="margin-top: 30px" class="btn btn-secondary btn-lg btn-block" id="tex"></button>
+		</tr>
+	</table>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script language="JavaScript" type="text/javascript">
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+20190517
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+var T1=10000;
+var T2=3000;
+var str = "---";
+
+//////////////////////////////
+
+// running the show
+
+//////////////////////////////
+
+cards = [];
+infCounter = 0
+
+//////////////////////////////
+
+// parsing the clues
+
+//////////////////////////////
+
+function initCards(selection){
+	var j=-1;
+	var x ="";
+	var g =-1;
+	var res = str.split("|");
+	res.map(function(item){
+		if(item.length==0){return;}
+		g++;
+		if(g%2==0){
+			j = j+1;
+			cards[j]=[];
+		}
+		cards[j][g%2]=item;
+		}
+	)
+
+	speed_ = speed[selection];
+	if (speed_ != null){
+		if(speed_=='FAST'){
+			T1=3000;
+			T2=500;
+		}              
+		if(speed_=='MED'){
+			T1=6000;
+			T2=1500;
+		}
+	}
+}
+
+//////////////////////////////
+
+function train3(){
+    showCard3();
+}
+
+　
+function showCard3(){
+	//cardno  = (infCounter++)%cards.length;
+    cardno  = Math.floor(Math.random() * 100) %cards.length;
+	showQn();
+	setTimeout(showAns,T1)
+	setTimeout(showCard3,T1+T2)
+}
+
+function showQn(){
+	if (document.getElementById) {
+		document.getElementById('tex').innerHTML = "<div>"+cards[cardno][0]+"</div>";
+		document.title="["+cards[cardno][0];
+	}
+}
+
+function showAns(){
+	if (document.getElementById) {
+		document.getElementById('tex').innerHTML = 
+		"<div class='question'>"+cards[cardno][1]+"</div>";
+		document.title="[["+cards[cardno][1]
+	}
+}
+
+function letsGo(a){
+	str = strs[a.innerHTML];
+	//alert(str);
+	initCards(a.innerHTML);
+	train3();
+	return
+	false;       
+}
+
+function showTopics(){
+	if(document.getElementById) {
+		s = "";
+		for (var k in strs){
+			//alert(k);
+			s = s + "<button id='ID"+k+"' class='btn btn-link btn-lg' href=''>"+k+"</button>";
+		}
+		s = s+"<p>";
+	document.getElementById('qn').innerHTML = s;
+	//alert(s);
+	}              
+
+	for(var k in strs){
+		id = "ID"+k;
+		a = document.getElementById(id);
+		if(a==null) continue;
+		a.onclick = function(){letsGo(this);return false;}
+	}
+}
+
+var cardno = 0;
+</script>
+</body>
+</html>
+　
+　
+
