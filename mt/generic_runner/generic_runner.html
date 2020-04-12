@@ -6,52 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity=m"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<title>insurance</title>
-
+<title>ahua</title>
 <script language="JavaScript" type="text/javascript">
-function getData(title) {
+	filesList = ["theta2","insurance","wisdom", "python", "aws", "nn", "spring"];
+	speed = {}; 
+	splash = "";
+	function getData(title) {
+			//magic to load script dynamically
             var newScript = document.createElement("script");
 			newScript.src = title+".js";
 			document.getElementById("output").appendChild(newScript);
+			//loaded script! lets show the topics in the script
 			newScript.onload = showTopics
-}
+	}
 </script>
+<style type="text/css">
+<!--
+body, input, button, select, option, textarea {
+	//background-color: #FF6600;
+	background-color: #000000;
+}
+-->
+</style>
 </head>
-<body>
-<div id="output"> 
-</div>
-	<div class="mx-auto" style="width: 50%; margin-top: 50px">
-	<select class="form-control" onChange="getData(this.value);">
-    <option value="-">ahua</option>
-    <option value="theta2">theta2</option>
-    <option value="hk.digi">hk.digi</option>
-	<option value="insurance_theta2">insurance_theta2</option>
-    <option value="4">4</option>
-	<option value="5">5</option>
-</select>
-	<table class="table table-dark mx-auto">
-		<tr>
-			<div id="qn"></div>
-			<button type="button"  style="margin-top: 30px" class="btn btn-secondary btn-lg btn-block" id="tex"></button>
-		</tr>
-	</table>
+<body onload=showJSfiles();>
+	
+	<div class="mx-auto" style="width: 50%; margin-top: 30px;">
+		<table class="table table-dark mx-auto">
+			<tr>
+				<button type="button"  id="tex" style="margin-top: 3px" class="btn btn-secondary btn-lg btn-block">AHUA</button>
+				<!-- <div id="qn">	</div> -->
+			</tr>
+		</table>
 	</div>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	<script language="JavaScript" type="text/javascript">
+	<div class="mx-auto" style="width: 80%; margin-top: 3px; text-align:center">
+		<div id="output"></div>
+	</div>
 
+<script language="JavaScript" type="text/javascript">
 ////////////////////////////////////////////////////////////////////////////////////////
 
-20190517
+20200411
 
 ////////////////////////////////////////////////////////////////////////////////////////
-
 
 var T1=10000;
 var T2=3000;
 var str = "---";
-
 //////////////////////////////
 
 // running the show
@@ -127,25 +128,45 @@ function showAns(){
 }
 
 function letsGo(a){
+	hideTopics();
 	str = strs[a.innerHTML];
-	//alert(str);
 	initCards(a.innerHTML);
 	train3();
-	return
-	false;       
+	return false;
+}
+
+function showJSfiles(){
+	if(document.getElementById) {
+		s = "";
+		for (var k in filesList){
+			s = s + "<button  onclick='getData("+"\""+ filesList[k]+"\""  + ")'  class='btn btn-link btn-lg' href=''>["+filesList[k]+"]</button>";
+		}
+		document.getElementById('output').innerHTML = s;
+	}
+}
+
+function hideTopics(){
+	//show is starting - no need to show all topics; hide them
+	if(document.getElementById) {
+		v = "<button class='btn btn-link btn-lg' onclick='window.location.reload(false)'>x</button>";
+		document.getElementById('output').innerHTML = v;
+	}
 }
 
 function showTopics(){
 	if(document.getElementById) {
-		s = "";
+		v = "";
 		for (var k in strs){
-			//alert(k);
-			s = s + "<button id='ID"+k+"' class='btn btn-link btn-lg' href=''>"+k+"</button>";
+			v = v + "<button id='ID"+k+"' class='btn btn-link btn-lg' href=''>"+k+"</button>";
 		}
-		s = s+"<p>";
-	document.getElementById('qn').innerHTML = s;
-	//alert(s);
-	}              
+		
+		v = v+  "<button class='btn btn-link btn-lg' onclick='window.location.reload(false)'>x</button>";
+	
+		if (splash!=""){
+			v = v +"<br><a href=''>--- --- ---</a><br><i>"+splash+"</i>";
+		}
+		document.getElementById('output').innerHTML = v;
+	}
 
 	for(var k in strs){
 		id = "ID"+k;
@@ -160,5 +181,6 @@ var cardno = 0;
 </body>
 </html>
 　
-　
-
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
