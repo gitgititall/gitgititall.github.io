@@ -1,5 +1,12 @@
 var strs ={
 
+in:'\
+||rem - SI reminders  <br> \
+mins6 - stuff to do in 6 mins <br> \
+tools1 - practice applying tools with back events <br> \
+tools-rod - apply rod to current events <br> \
+| \
+',
 
 rem : '\
 ||: write 1000 words to clear the mind |...\
@@ -26,12 +33,7 @@ mins6: '\
 || sleep descent 6|    \
 || 10 questions 6 |    \
 || active love 3 // reversal of des 3 |    \
-|| atta 6 | \
-',
-
-now_thinking : '\
-||what is event api? | see the manual! |\
-||what is session api? | please ... see the manual! |\
+|| rotimaker clean 6 | \
 ',
 
 tools1: '\
@@ -61,14 +63,14 @@ tools1: '\
 ',
 
 tools_rod: '\
-|| singtel bill | \
-|| my insurance |   \
-|| roti maker |   \
-|| video conf |   \
-|| air con |   \
+|| singtel broadband | \
+|| my insurance |  \
+|| roti maker |  \
+|| video conf |  \
+|| air con |  \
 || save counsellor advice |   \
 || talk to khalu and f&f |   \
-|| DL for group |   \
+|| thank PDant |   \
 ',
 
 HINDI:'\
@@ -80,10 +82,6 @@ HINDI:'\
 || बाबा | \
 ',
 
-
-
 }
 
-speed = {
-	tools_rod:'FAST',
-}
+speed = {tools_rod:'FAST',}
