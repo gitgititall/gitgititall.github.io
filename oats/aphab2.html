@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* CSS to make the background black */
+      body {
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      // Step 1: Create an array of words
+const words = [
+  "car", "cat", "welcome", "love", "tree", "ocean", "dream", "flower", 
+  "star", "magic", "adventure", "journey", "rainbow", "fantasy", "music", 
+  "dance", "butterfly", "dragon", "mystery", "sunshine", "forest", "moonlight", 
+  "fairy", "treasure", "silhouette", "miracle", "whisper", "echo", "harmony", 
+  "sunset", "rhythm", "embrace", "sparkle", "universe", "wanderlust", "serenity", 
+  "galaxy", "feather", "infinity", "melody", "courage", "inspire", "sunrise", 
+  "firefly", "imagination", "freedom", "passion", "illuminate", "tranquility", 
+  "majesty", "illusion", "dreamy", "twilight", "paradise", "kaleidoscope", 
+  "luminescence", "radiance", "enchant", "labyrinth", "solitude", "puzzle", 
+  "spectacle", "whirlwind", "cascade", "horizon", "gossamer", "aurora", 
+  "whimsical", "opal", "reverie", "enigma", "emerald", "twinkle", "azure", 
+  "velvet", "orchid", "symphony", "quartz", "silky", "voyage", "papyrus", 
+  "ethereal", "pirouette", "crystal", "lagoon", "obsidian", "cascade", "stardust", 
+  "arcade", "sapphire", "lace", "divine", "waltz", "gold", "eclipse", 
+  "carousel", "mirage", "turquoise", "ebony", "spiral", "harlequin", 
+  "phantom", "marble", "paradox", "serenade", "opaline", "maze", "rhapsody", 
+  "ivory", "flame", "opal", "prism", "lyric", "sequin", "riddle", "jubilee", 
+  "carnival", "frost", "tapestry", "spell", "glimmer", "ivory", "alabaster", 
+  "buttercup", "cinnamon", "dew", "ebony", "fog", "ginger", "honey", "icicle", 
+  "jade", "kitten", "lilac", "mimosa", "nectarine", "obsidian", "peppermint", 
+  "quill", "rosemary", "starfish", "tulip", "umbrella", "vanilla", "walnut", 
+  "xenon", "yak", "zeppelin", "ambrosia", "blossom", "crescent", "dawn", 
+  "emerald", "firework", "gleam", "halo", "illumination", "jubilation", "kaleidoscope", 
+  "luminary", "mystique", "nova", "oasis", "phantasm", "quintessence", "revelation", 
+  "symphony", "trance", "utopia", "vibrance", "whirlpool", "xanadu", "yearning", "zenith",
+  "adore", "bliss", "charm", "delight", "euphoria", "felicity", "glow", "harmony",
+  "inspire", "jovial", "kudos", "lustrous", "mirth", "nirvana", "ovation", "paradise",
+  "quaint", "rapture", "serenity", "tranquility", "unison", "vivacious", "wonder", 
+  "exuberant", "youthful", "zealous", "ardor", "blithe", "celebrate", "dazzle", "elated", 
+  "festive", "glee", "harmonious", "idyllic", "joyous", "kinetic", "luminous", "magnificent",
+  "noble", "optimistic", "prosperous", "quintessential", "radiant", "stellar", "thriving", 
+  "unforgettable", "vibrant", "whimsical", "exquisite", "youth", "zen"
+];
+      // Step 2: Set up the setInterval function
+      setInterval(() => {
+        // Generate a random index
+        const randomIndex = Math.floor(Math.random() * words.length);
+
+        // Step 3: Speak the current word
+        const utterance = new SpeechSynthesisUtterance(words[randomIndex]);
+        window.speechSynthesis.speak(utterance);
+      }, 5000); // 5000 milliseconds = 5 seconds
+    </script>
+  </body>
+</html>
+
