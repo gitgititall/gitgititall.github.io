@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <script>
+      // Step 1: Create the array of alphabet
+      const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+
+      // Step 3: Set up the setInterval function
+      setInterval(() => {
+        // Generate a random index
+        const randomIndex = Math.floor(Math.random() * alphabet.length);
+
+        // Step 4: Speak the current letter
+        const utterance = new SpeechSynthesisUtterance(alphabet[randomIndex]);
+        window.speechSynthesis.speak(utterance);
+      }, 5000); // 5000 milliseconds = 5 seconds
+    </script>
+  </body>
+</html>
