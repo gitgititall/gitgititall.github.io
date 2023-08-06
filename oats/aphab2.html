@@ -1,17 +1,42 @@
+
+
 <!DOCTYPE html>
-<html>
-  <head>
-    <style>
-      /* CSS to make the background black */
-      body {
-        background-color: black;
-      }
-    </style>
-  </head>
-  <body>
-    <script>
-      // Step 1: Create an array of words
-const words = [
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>aphab2</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      font-size: 24px; /* This line increases the text size */
+    }
+    .container {
+      max-width: 500px;
+      margin: auto;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1></h1>
+    <select id="wordCategory" onchange="selectCategory()">
+      <!-- Dropdown options will be populated here from JavaScript -->
+    </select>
+    <button id="pauseButton" onclick="togglePause()">Pause</button>
+    <p id="spokenWord"></p>
+  </div>
+
+  <script>
+    const wordCategories = {
+      nature: ["tree", "river", "mountain", "forest"],
+      emotions: ["love", "joy", "anger", "sadness"],
+      fantasy: ["dragon", "wizard", "fairy", "castle"],
+	  akursi: ['वसि आ कुर्सि युहु अस समावाती वल अरदा', 'वला या- ऊदुहु हिफ़ज़हुमा', 'व हुवल अलीउल अज़ीम'],
+	  sleep : [
   "car", "cat", "welcome", "love", "tree", "ocean", "dream", "flower", 
   "star", "magic", "adventure", "journey", "rainbow", "fantasy", "music", 
   "dance", "butterfly", "dragon", "mystery", "sunshine", "forest", "moonlight", 
@@ -44,17 +69,70 @@ const words = [
   "festive", "glee", "harmonious", "idyllic", "joyous", "kinetic", "luminous", "magnificent",
   "noble", "optimistic", "prosperous", "quintessential", "radiant", "stellar", "thriving", 
   "unforgettable", "vibrant", "whimsical", "exquisite", "youth", "zen"
-];
-      // Step 2: Set up the setInterval function
-      setInterval(() => {
-        // Generate a random index
-        const randomIndex = Math.floor(Math.random() * words.length);
+],
 
-        // Step 3: Speak the current word
-        const utterance = new SpeechSynthesisUtterance(words[randomIndex]);
-        window.speechSynthesis.speak(utterance);
-      }, 5000); // 5000 milliseconds = 5 seconds
-    </script>
-  </body>
+      // Add new categories here
+    };
+
+    let selectedWords = wordCategories.nature; // default selection
+    let interval;
+    let isPaused = false;
+
+	function startSpeaking() {
+      interval = setInterval(() => {
+        const randomIndex = Math.floor(Math.random() * selectedWords.length);
+        const word = selectedWords[randomIndex];
+        document.getElementById('spokenWord').textContent = word;
+        speakWord(word);
+      }, 5000);
+	}
+
+    function speakWord(word) {
+      const msg = new SpeechSynthesisUtterance();
+      msg.text = word;
+      if (/^[a-zA-Z0-9]/.test(word)) {
+        msg.lang = 'en-US'; // Set to English
+      } else {
+        msg.lang = 'hi-IN'; // Set to Hindi
+      }
+      window.speechSynthesis.speak(msg);
+    }
+
+    // Function to populate the dropdown with categories
+    function populateDropdown() {
+      const dropdown = document.getElementById('wordCategory');
+      for (const category in wordCategories) {
+        const option = document.createElement('option');
+        option.value = category;
+        option.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+        dropdown.appendChild(option);
+      }
+    }
+	
+	function togglePause() {
+      const pauseButton = document.getElementById('pauseButton');
+      if (isPaused) {
+        startSpeaking(); // Resume speaking
+        pauseButton.textContent = 'Pause';
+        isPaused = false;
+      } else {
+        clearInterval(interval); // Pause speaking
+        window.speechSynthesis.cancel(); // Stop any ongoing speech
+        pauseButton.textContent = 'Resume';
+        isPaused = true;
+      }
+    }
+	
+    function selectCategory() {
+      if (isPaused) togglePause(); // Resume if paused
+      clearInterval(interval); // Stop the previous interval
+      const category = document.getElementById('wordCategory').value;
+      selectedWords = wordCategories[category];
+      startSpeaking(); // Start speaking the new category
+    }
+
+    populateDropdown(); // Populate the dropdown
+    startSpeaking(); // Start speaking the default category
+  </script>
+</body>
 </html>
-
