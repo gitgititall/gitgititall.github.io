@@ -1,0 +1,181 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>aphab2</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      font-size: 24px; /* This line increases the text size */
+    }
+    .container {
+      max-width: 500px;
+      margin: auto;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1></h1>
+    <select id="wordCategory" onchange="selectCategory()">
+      <!-- Dropdown options will be populated here from JavaScript -->
+    </select>
+    <button id="pauseButton" onclick="togglePause()">Pause</button>
+	<select id="delay" onchange="changeDelay()">
+	<option value="5000">5 s</option>
+	<option value="8000">8 s</option>
+	<option value="10000">10 s</option>
+	<option value="30000">30 s</option>
+	<option value="2000">2 s</option>
+	<!-- You can add more options here -->
+	</select>
+	<select id="selectionMode" onchange="changeSelectionMode()">
+		<option value="random">Random</option>
+		<option value="sequential">Sequential</option>
+	
+	</select>
+	<p id="spokenWord"></p>
+  </div>
+
+  <script>
+    const wordCategories = {
+	 ahua : ['a h u a'],
+	 sleep : [
+  "car", "cat", "welcome", "love", "tree", "ocean", "dream", "flower", 
+  "star", "magic", "adventure", "journey", "rainbow", "fantasy", "music", 
+  "dance", "butterfly", "dragon", "mystery", "sunshine", "forest", "moonlight", 
+  "fairy", "treasure", "silhouette", "miracle", "whisper", "echo", "harmony", 
+  "sunset", "rhythm", "embrace", "sparkle", "universe", "wanderlust", "serenity", 
+  "galaxy", "feather", "infinity", "melody", "courage", "inspire", "sunrise", 
+  "firefly", "imagination", "freedom", "passion", "illuminate", "tranquility", 
+  "majesty", "illusion", "dreamy", "twilight", "paradise", "kaleidoscope", 
+  "luminescence", "radiance", "enchant", "labyrinth", "solitude", "puzzle", 
+  "spectacle", "whirlwind", "cascade", "horizon", "gossamer", "aurora", 
+  "whimsical", "opal", "reverie", "enigma", "emerald", "twinkle", "azure", 
+  "velvet", "orchid", "symphony", "quartz", "silky", "voyage", "papyrus", 
+  "ethereal", "pirouette", "crystal", "lagoon", "obsidian", "cascade", "stardust", 
+  "arcade", "sapphire", "lace", "divine", "waltz", "gold", "eclipse", 
+  "carousel", "mirage", "turquoise", "ebony", "spiral", "harlequin", 
+  "phantom", "marble", "paradox", "serenade", "opaline", "maze", "rhapsody", 
+  "ivory", "flame", "opal", "prism", "lyric", "sequin", "riddle", "jubilee", 
+  "carnival", "frost", "tapestry", "spell", "glimmer", "ivory", "alabaster", 
+  "buttercup", "cinnamon", "dew", "ebony", "fog", "ginger", "honey", "icicle", 
+  "jade", "kitten", "lilac", "mimosa", "nectarine", "obsidian", "peppermint", 
+  "quill", "rosemary", "starfish", "tulip", "umbrella", "vanilla", "walnut", 
+  "xenon", "yak", "zeppelin", "ambrosia", "blossom", "crescent", "dawn", 
+  "emerald", "firework", "gleam", "halo", "illumination", "jubilation", "kaleidoscope", 
+  "luminary", "mystique", "nova", "oasis", "phantasm", "quintessence", "revelation", 
+  "symphony", "trance", "utopia", "vibrance", "whirlpool", "xanadu", "yearning", "zenith",
+  "adore", "bliss", "charm", "delight", "euphoria", "felicity", "glow", "harmony",
+  "inspire", "jovial", "kudos", "lustrous", "mirth", "nirvana", "ovation", "paradise",
+  "quaint", "rapture", "serenity", "tranquility", "unison", "vivacious", "wonder", 
+  "exuberant", "youthful", "zealous", "ardor", "blithe", "celebrate", "dazzle", "elated", 
+  "festive", "glee", "harmonious", "idyllic", "joyous", "kinetic", "luminous", "magnificent",
+  "noble", "optimistic", "prosperous", "quintessential", "radiant", "stellar", "thriving", 
+  "unforgettable", "vibrant", "whimsical", "exquisite", "youth", "zen"
+	]
+      // Add new categories here
+    };
+
+    let selectedWords = wordCategories.ahua; // default selection
+    let interval;
+    let isPaused = false;
+	let delay = 5000; // Default delay
+	let selectionMode = 'random'; // Default selection mode
+	let currentIndex = 0; // For tracking the current index in sequential mode
+
+	function changeDelay() {
+		const newDelay = document.getElementById('delay').value;
+		delay = parseInt(newDelay, 10);
+		// Restart the speaking with the new delay
+		clearInterval(interval);
+		startSpeaking();
+	}
+	
+	function changeSelectionMode() {
+		selectionMode = document.getElementById('selectionMode').value;
+		currentIndex = 0; // Reset index when changing modes
+		// Restart the speaking to apply the new mode
+		clearInterval(interval);
+		startSpeaking();
+	}
+
+/*
+	function startSpeaking() {
+      interval = setInterval(() => {
+        const randomIndex = Math.floor(Math.random() * selectedWords.length);
+        const word = selectedWords[randomIndex];
+        document.getElementById('spokenWord').textContent = word;
+        speakWord(word);
+      }, delay);
+	}
+*/
+function startSpeaking() {
+  interval = setInterval(() => {
+    let word;
+    if (selectionMode === 'random') {
+      word = selectedWords[Math.floor(Math.random() * selectedWords.length)];
+    } else {
+      word = selectedWords[currentIndex];
+      currentIndex = (currentIndex + 1) % selectedWords.length; // Loop back to the start if at the end
+    }
+    document.getElementById('spokenWord').textContent = word;
+    speakWord(word);
+  }, delay);
+}
+    function speakWord(word) {
+      const msg = new SpeechSynthesisUtterance();
+      msg.text = word;
+      if (/^[a-zA-Z0-9]/.test(word)) {
+        msg.lang = 'en-US'; // Set to English
+      } else {
+        msg.lang = 'hi-IN'; // Set to Hindi
+      }
+      window.speechSynthesis.speak(msg);
+    }
+
+    // Function to populate the dropdown with categories
+    function populateDropdown() {
+      const dropdown = document.getElementById('wordCategory');
+      for (const category in wordCategories) {
+        const option = document.createElement('option');
+        option.value = category;
+        option.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+        dropdown.appendChild(option);
+      }
+    }
+	
+	function togglePause() {
+      const pauseButton = document.getElementById('pauseButton');
+      if (isPaused) {
+        startSpeaking(); // Resume speaking
+        pauseButton.textContent = 'Pause';
+        isPaused = false;
+      } else {
+        clearInterval(interval); // Pause speaking
+        window.speechSynthesis.cancel(); // Stop any ongoing speech
+        pauseButton.textContent = 'Resume';
+        isPaused = true;
+      }
+    }
+	
+    function selectCategory() {
+      currentIndex = 0; // Reset index when changing modes
+      if (isPaused) togglePause(); // Resume if paused
+      clearInterval(interval); // Stop the previous interval
+      const category = document.getElementById('wordCategory').value;
+      selectedWords = wordCategories[category];
+      startSpeaking(); // Start speaking the new category
+    }
+
+    populateDropdown(); // Populate the dropdown
+    startSpeaking(); // Start speaking the default category
+  </script>
+</body>
+</html>
